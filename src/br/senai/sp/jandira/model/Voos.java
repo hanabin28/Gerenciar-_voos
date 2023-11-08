@@ -1,11 +1,16 @@
 package br.senai.sp.jandira.model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 abstract class Voos {
     private int numeroVoo;
-    private String origem, destino, dataPartida;
+    private LocalDate dataPartida = LocalDate.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private String dataFormatada = dataPartida.format(formatter);
+    private String origem, destino;
 
     List<Voos> listVoos = new ArrayList<>();
 
@@ -16,18 +21,18 @@ abstract class Voos {
 
     public void exibirVoos(){
         for (Voos voo: listVoos){
-            System.out.println(voo.getNumeroVoo());
-            System.out.println(voo.getDataPartida());
-            System.out.println(voo.getOrigem());
-            System.out.println(voo.getDestino());
+            System.out.println("Número do vôo: " + voo.getNumeroVoo());
+            System.out.println("Data de partida: " + voo.getDataFormatada());
+            System.out.println("Local de partida: " + voo.getOrigem());
+            System.out.println("Local de destino: " + voo.getDestino());
         }
     }
 
 
 
-    public Voos(int numeroVoo, String dataPartida, String origem, String destino) {
+    public Voos(int numeroVoo, String dataFormatada, String origem, String destino) {
         this.numeroVoo = numeroVoo;
-        this.dataPartida = dataPartida;
+        this.dataFormatada = dataFormatada;
         this.origem = origem;
         this.destino = destino;
     }
@@ -41,12 +46,20 @@ abstract class Voos {
         this.numeroVoo = numeroVoo;
     }
 
-    public String getDataPartida() {
+    public LocalDate getDataPartida() {
         return dataPartida;
     }
 
-    public void setDataPartida(String dataPartida) {
+    public void setDataPartida(LocalDate dataPartida) {
         this.dataPartida = dataPartida;
+    }
+
+    public String getDataFormatada() {
+        return dataFormatada;
+    }
+
+    public void setDataFormatada(String dataFormatada) {
+        this.dataFormatada = dataFormatada;
     }
 
     public String getOrigem() {

@@ -9,7 +9,8 @@ public class Menu {
         boolean continuar = true;
 
         do {
-
+            System.out.println("/-/-/-/-/ Menu /-/-/-/-/");
+            System.out.println("Para saber informações sobre um vôo, digite abaixo o \nnúmero do vôo, ou a data de partida, ou o local de \npartida ou destino:");
 
         }while (continuar);
     }
